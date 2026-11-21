@@ -15,11 +15,11 @@ import com.catatuang.app.ui.ringkasan.RingkasanViewModel
 /** Membuat semua ViewModel dengan Repository dari Application. */
 object AppViewModelProvider {
     val Factory = viewModelFactory {
-        initializer { BerandaViewModel(app().repository) }
+        initializer { BerandaViewModel(app().repository, app().anggaran) }
         initializer { FormViewModel(createSavedStateHandle(), app().repository) }
         initializer { DetailViewModel(createSavedStateHandle(), app().repository) }
         initializer { RiwayatViewModel(app().repository) }
-        initializer { RingkasanViewModel(app().repository) }
+        initializer { RingkasanViewModel(app().repository, app().anggaran) }
     }
 }
 

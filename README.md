@@ -9,16 +9,19 @@ Buka folder ini di Android Studio, tunggu Gradle sync, lalu Run `app` di emulato
 ## Struktur
 ```
 app/src/main/java/com/catatuang/app/
-  data/        Transaksi (entity), TransaksiDao, AppDatabase, TransaksiRepository
-  ui/beranda   Beranda: saldo, total bulan ini, 5 transaksi terbaru
+  data/        Transaksi (entity), TransaksiDao, AppDatabase, TransaksiRepository,
+               AnggaranRepository (batas anggaran di DataStore)
+  ui/beranda   Beranda: saldo, total bulan ini, peringatan anggaran, 5 transaksi terbaru
   ui/form      Form tambah/edit + validasi nominal
   ui/detail    Detail + hapus dengan konfirmasi
-  ui/riwayat   Riwayat dikelompokkan per tanggal
-  ui/ringkasan Ringkasan (sementara: total pengeluaran bulan ini)
+  ui/riwayat   Riwayat per tanggal dengan filter bulan dan kategori
+  ui/ringkasan Ringkasan bulanan per kategori + atur batas anggaran
   ui/navigation NavHost + bottom navigation
 ```
 
-## Status MVP
-- Selesai: tambah/edit/hapus transaksi tersimpan di Room, Beranda dengan saldo, bottom navigation, Detail, Riwayat dasar.
-- Sedang dikembangkan: filter Riwayat per bulan & kategori, Ringkasan per kategori.
-- Belum: batas anggaran (DataStore) dan peringatan di Beranda.
+## Tes
+`./gradlew testDebugUnitTest` menguji status anggaran, persentase per kategori, dan pergeseran bulan.
+
+## Status
+- Selesai: semua fitur di proposal (catat transaksi, Beranda, Riwayat dengan filter, Ringkasan per kategori, batas anggaran).
+- Bug yang diketahui: lihat bagian "Bug yang masih ada" di laporan Final Readiness.

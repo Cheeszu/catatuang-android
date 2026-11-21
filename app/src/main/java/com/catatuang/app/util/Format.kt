@@ -38,6 +38,12 @@ fun rentangBulan(millis: Long = System.currentTimeMillis()): Pair<Long, Long> {
     return awal to cal.timeInMillis - 1
 }
 
+/** Millis yang sama digeser [jumlah] bulan (negatif = mundur). */
+fun geserBulan(millis: Long, jumlah: Int): Long = Calendar.getInstance().apply {
+    timeInMillis = rentangBulan(millis).first
+    add(Calendar.MONTH, jumlah)
+}.timeInMillis
+
 /** Mengubah millis menjadi awal hari, untuk mengelompokkan transaksi per tanggal. */
 fun awalHari(millis: Long): Long = Calendar.getInstance().apply {
     timeInMillis = millis
